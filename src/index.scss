@@ -1,0 +1,25 @@
+@import "fonts.scss";
+@import "theme.scss";
+
+body {
+  margin: 0;
+  font-family: 'Roboto Slab', serif, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body, html {
+  background-color: $background-color;
+}
+
+input, button, select {
+  &:focus {
+    outline: $primary-color auto 5px;
+    outline-offset: -2px;
+  }
+}
