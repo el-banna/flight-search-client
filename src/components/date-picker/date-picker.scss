@@ -1,0 +1,61 @@
+@import '../../theme.scss';
+
+.react-datepicker {
+  &__day {
+    color: $primary-color;
+    background-color: white;
+    font-weight: normal;
+    // padding: 5px;
+    // margin: 10px;
+
+    &--selected {
+      border-radius: 50%;
+      background-color: $primary-color;
+      color: white;
+      font-weight: bold;
+    }
+
+    &--disabled {
+      color: $disabled-color;
+    }
+
+    &:hover {
+      border-radius: 50%;
+      border: none;
+    }
+    
+    &:nth-child(5) {
+      position: relative;
+
+      &:after {
+        border-right: 1px solid $border-color;
+        content: " ";
+        position: absolute;
+        width: 1px;
+        height: 36px;
+        right: -3px;
+      }
+    }
+  }
+
+  &__current-month {
+    background-color: white;
+    color: black;
+  }
+
+  &__day-names, &__month-container, &__header {
+    background-color: white;
+  }
+
+  &__navigation--next {
+    border-left-color: $primary-color;
+  }
+
+  &__navigation--previous {
+    border-right-color: $primary-color;
+  }
+
+  &__triangle {
+    border-bottom-color: white !important;
+  }
+}
