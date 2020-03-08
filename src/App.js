@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './app.module.scss';
+import styles from './App.module.scss';
 import AutoSuggest from './components/auto-suggest';
 import DatePicker from './components/date-picker';
 import CheckBox from './components/check-box';
