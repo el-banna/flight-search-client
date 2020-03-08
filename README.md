@@ -1,3 +1,5 @@
+Check live demo: https://flight-search-client.now.sh
+
 ## Getting started
 * To run the project locally:
 ```
