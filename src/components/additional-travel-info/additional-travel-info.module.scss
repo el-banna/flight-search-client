@@ -1,0 +1,135 @@
+@import '../../theme.scss';
+
+.input-preview-container {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  font-size: 15px;
+  padding: 13px 10px;
+  font-weight: normal;
+  border: 1px inset $border-color;
+  box-sizing: border-box;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+
+  .arrow-down {
+    right: 23px;
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.controls {
+  position: absolute;
+  background: white;
+  color: black;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  top: 61px;
+  border-radius: 5px;
+  padding-top: 15px;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid white;
+  position: absolute;
+  left: calc(50% - 15px);
+  top: 46px;
+}
+
+.mini-form-container {
+  padding: 10px 25px;
+
+  label {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+}
+
+.mini-form-control {
+  position: relative;
+}
+
+.done-button {
+  text-align: right;
+  border-top: 1px solid $border-color;
+  padding: 7px 15px;
+  margin-top: 10px;
+  
+  button {
+    border: none;
+    font-size: 20px;
+    color: $primary-color;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif, sans-serif;
+    cursor: pointer;
+  }
+}
+
+.number-button {
+  border-radius: 50%;
+  color: #00A698;
+  font-size: 30px;
+  border: 2px solid #b2b2b2;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-weight: bold;
+  font-family: 'Roboto Slab', serif, sans-serif;
+
+  &:disabled {
+    background-color: $disabled-color;
+    opacity: 0.8;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.number-button ~ span {
+  display: inline-block;
+}
+
+.number-controls {
+  display: flex;
+  align-items: center;
+}
+
+.number-text {
+  width: 55px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.number-control-bonus-info {
+  padding-left: 15px;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.class-select {
+  width: 100%;
+  background: transparent;
+  -webkit-appearance: none;
+  font-size: 18px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.arrow-down {
+  filter: invert(100%);
+  position: absolute;
+  width: 17px;
+  right: 14px;
+  top: calc(50% - 7px);
+}
