@@ -45,6 +45,7 @@ function AutoSuggest({ onAirportSelected, selectedAirport }) {
   function handleQueryChange(event) {
     let newQuery = event.target.value;
     setQuery(newQuery);
+    setIsSuggestListVisible(false);
 
     fetchAirports(newQuery);
   }
@@ -67,37 +68,44 @@ function AutoSuggest({ onAirportSelected, selectedAirport }) {
   }
 
   function getHighlightedText(text) {
-    const pattern = new RegExp(query, 'i')
-    if (pattern.test(text)) {
-      const stringParts = text.split(pattern);
-      if (stringParts.length === 1) {
+    if (!text) return null;
+
+    const pattern = new RegExp(query, 'i');
+    const matchResult = text.match(pattern);
+    if (matchResult) {
+      let index = matchResult.index;
+      debugger;
+
+      if (index === 0 && text.length === query.length) {
+        return <strong>{text}</strong>;
+      }
+      else if (index === 0 && text.length !== query.length) {
+        // highlight is on the left
         return (
           <>
-            <strong>{stringParts[0]}</strong>
+            <strong>{text.substring(0, query.length)}</strong>
+            <span>{text.substring(query.length, text.length)}</span>
           </>
         );
       }
-      else if (stringParts.length === 3) {
+      else if (index > 0 && index + query.length === text.length) {
+        // highlight is on the right
         return (
           <>
-            <span>{stringParts[0]}</span><strong>{text.match(pattern)[0]}</strong><span>{stringParts[2]}</span>
+            <span>{text.substring(0, index)}</span>
+            <strong>{text.substring(index, text.length)}</strong>
           </>
         );
-      } else {
-        // either the first part is the matching part or the second one
-        if (pattern.test(stringParts[0])) {
-          return (
-            <>
-              <strong>{text.match(pattern)[0]}</strong><span>{stringParts[1]}</span>
-            </>
-          );
-        } else {
-          return (
-            <>
-              <span>{stringParts[0]}</span><strong>{text.match(pattern)[0]}</strong>
-            </>
-          );
-        }
+      }
+      else {
+        // highlight is in between both sides
+        return (
+          <>
+            <span>{text.substring(0, index)}</span>
+            <strong>{text.substring(index, index + query.length)}</strong>
+            <span>{text.substring(index + query.length, text.length)}</span>
+          </>
+        );
       }
     }
     return <span>{text}</span>;
@@ -122,7 +130,7 @@ function AutoSuggest({ onAirportSelected, selectedAirport }) {
               <li className="" key={index} onMouseDown={handleAirportSelected.bind(this, index)}>
                 <ListItemIcon />
                 <div className="">
-                  <div>{getHighlightedText(item.name)} {item.iata && getHighlightedText(item.iata)}</div>
+                  <div>{getHighlightedText(item.name)} {item.iata && <>({getHighlightedText(item.iata)})</>}</div>
                   <div className={styles['country']}>{getHighlightedText(item.country)}</div>
                 </div>
               </li>
